@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model auctions.Models.RegisterViewModel
+<h1>Welcome!</h1>
+
+<div class="row">
+    <div class="col-sm-5 col-md-6">
+        <h3>Registration</h3>
+        <form action="Register" method="post">
+        <div class="form-group mt-5">
+                <label asp-for="Alias"></label>
+                <input type="text" class="form-control" asp-for="Alias">
+                <span class="text-danger" asp-validation-for="Alias"></span>
+        </div>
+        <div class="form-group mt-5">
+            <label asp-for="Name"></label>
+            <input type="text" class="form-control" asp-for="Name">
+            <span  class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input type="text" class="form-control" asp-for="Email">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input type="password" class="form-control" asp-for="Password">
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <input type="password" class="form-control" asp-for="ConfirmPassword">
+            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <button type="submit" class="btn btn-success pull-right">Register</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+       <form action="Login" method="post">
+         <h3>Login</h3>
+        <div class="form-group mt-5">
+            <label asp-for="Email"></label>
+            <input type="text" class="form-control" asp-for="Email" name="email">
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input type="password" class="form-control" asp-for="Password" name="password">
+        </div>
+        <p class="text-danger">@TempData["logerror"]</p>
+        <button type="submit" class="btn btn-success pull-right">Sign In</button>
+    </form>
+  </div>
+</div>
+</div>

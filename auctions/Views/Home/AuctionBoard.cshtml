@@ -1,0 +1,70 @@
+@{
+    ViewData["Title"] = "Auction Board";
+}
+@model auctions.Models.User
+<nav class="navbar navbar-inverse navbar-fixed-top bg-dark">
+    <div class="row">
+        <a asp-area="" asp-controller="" asp-action="" class="navbar-brand text-white">Hi @ViewBag.Username.Name!</a>
+    </div>
+    <div class="row ml-3 pull-right">
+        <a asp-area="" asp-controller="Home" asp-action="Logout" class="navbar-brand text-white">Log off</a>
+    </div>
+</nav>
+<div class="row justify-content-start mt-5">
+    <div class="col-sm-5">
+       <form action="Idea" method="post">
+        <div class="form-group mt-5">
+          <h3>Post something here</h3>
+            <input type="text" class="form-control" for="postmsg" name="postmsg">
+        </div>
+        <button type="submit" class="btn btn-success pull-right">Idea</button>
+    </form>
+  
+@{
+    foreach (var posts in @ViewBag.display)
+    {
+       
+       <form action="LikedPost" method="post">
+        <div class="row justify-content-start mt-5">
+            <div class="col-sm"><a href="users/@posts.User.UserId">@posts.User.Alias says:</a></div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-sm"><h4>@posts.Idea</h4></div>
+        </div>  
+       
+        <div class="row justify-content-start">
+            <div class="col-sm"><a href="bright_ideas/@posts.PostId">@posts.likes.Count</a> people like this</div>
+        </div>
+        
+        </form>
+             <div class="row justify-content-start mt-5">
+                <form action="LikedPost" method="post">
+                    <button type="submit" class="btn-success pull-right">Like</button>
+                    <input type="hidden" name="postid" value=@posts.PostId>
+                </form>
+            </div>
+             <div class="row justify-content-start mt-3">
+            @if (@posts.User.UserId == @ViewBag.Id)
+            {
+                <div class="col-sm">
+                    <form action="delete" method="POST">
+                        <input type="hidden" name="postid" value=@posts.PostId>
+                        <button type="submit" class=" btn-danger">Delete</button>
+                    </form>
+                </div>
+            }  
+            </div>
+    }
+
+
+
+
+}
+
+</div>
+       
+
+   
+
+
+

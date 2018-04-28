@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Create Auction";
+}
+@model auctions.Models.Post
+<nav class="navbar navbar-inverse navbar-fixed-top bg-dark">
+    <div class="row">
+        <a asp-area="" asp-controller="Home" asp-action="Home" class="navbar-brand text-white">Bright Ideas</a>
+    </div>
+    <div class="row ml-3 pull-right">
+        <a asp-area="" asp-controller="Home" asp-action="Logout" class="navbar-brand text-white">Log off</a>
+    </div>
+</nav>
+ <div class="col-sm-5 col-md-6 mt-5">
+@{
+            int count = 0;
+            @foreach (var user in @ViewBag.Result)
+            {   count++;
+                <h1>Name: @user.User.Name</h1>
+                <h3>Alias: @user.User.Alias</h3>
+                <h3>Email: @user.User.Email</h3>
+                <div class="container">
+                    <div class="row">
+                        <p>Total number of Posts:</p>
+                        
+                    </div>
+                    <div class="row">
+                       <p>Total number of Likes: @user.likes.Count</p>
+                    </div>
+                </div>
+            }
+} 
+  </div>
